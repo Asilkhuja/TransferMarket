@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Tranfermarkt</title>
+<link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center link-body-emphasis text-decoration-none">
+        <span class="fs-4">TransferMarkt</span>
+      </a>
+
+      <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="/">Главная</a>
+        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="about">Про нас</a>
+        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="contacts">Наши контакты</a>
+        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="create">Добавить игрока</a>
+      </nav>
+    </div>
+</div>
+<div class="container">
+    <h1>Главная</h1>
+    <div class="d-flex align-items-center">
+        <form action = 'search' method="POST">
+            {% csrf_token %}
+          <input type="text" placeholder="Поиск..." name="search_player">
+            <button class="btn btn-primary rounded-pill px-3" type="submit">Поиск</button>
+        </form>
+    </div>
+    <hr>
+    {% for i in player %}
+    Игроки: <a href="player/{{ i.id }}">{{ i.player_name }}</a>
+    {% endfor %}
+    <hr>
+    {% for i in category %}
+    Категории: <a href="category/{{ i.id }}">{{ i.category }}</a>
+    {% endfor %}
+    <hr>
+    {% if user.is_authenticated %}
+    <a href="accounts/logout">Выйти</a>
+    {% else %}
+    <a href="accounts/login">Войти</a>
+    {% endif %}
+</div>
+</body>
+</html>
