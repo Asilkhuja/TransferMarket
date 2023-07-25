@@ -1,0 +1,38 @@
+{% extends 'main/base.html' %}
+
+{%block title%}
+{{ title }}
+{% endblock %}
+
+{%block content%}
+    <h1>Главная страница</h1>
+    {% if tasks %}
+        {% for el in tasks %}
+            <div class="alert aler-warning mt-2">
+                <h3>{{ el.title }}</h3>
+                <p>{{ el.title }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>У нас нет записей</p>
+    {% endif %}
+{% endblock %}
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Главная страница</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-mb-4 mb-3 border-bottom">-->
+<!--      <h5 class="my-0 mr-md-auto front-weight-normal">itProger</h5>-->
+<!--      <nav class="my-2 my-md-0 mr-md-3">-->
+<!--        <a class="p-2 text-dark" href="/">Главная</a>-->
+<!--        <a class="p-2 text-dark" href="about-us">Про нас</a>-->
+<!--      </nav>-->
+<!--    </div>-->
+<!--    <h1>Главная страница</h1>-->
+<!--    <p>Просто текст</p>-->
+<!--</body>-->
+<!--</html>-->
